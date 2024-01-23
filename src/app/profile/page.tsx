@@ -10,6 +10,8 @@ import InfoBox from "@/components/layout/InfoBox";
 import SuccessBox from "@/components/layout/SuccessBox";
 import toast from "react-hot-toast";
 import UserTabs from "@/components/layout/UserTabs";
+import EditableImage from "@/components/layout/EditableImage";
+import Right from "@/components/layout/icons/Right";
 
 export default function ProfilePage() {
   const session = useSession();
@@ -45,7 +47,6 @@ export default function ProfilePage() {
 
   async function handleProfileInfoUpdate(ev: any) {
     ev.preventDefault();
-
     const savingPromise = new Promise<void>(async (resolve, reject) => {
       const response = await fetch("/api/profile", {
         method: "PUT",
@@ -108,13 +109,18 @@ export default function ProfilePage() {
 
   return (
     <section className="mt-8">
-      <UserTabs isAdmin={isAdmin}/>
-      {/* <h1 className="text-center text-red-500 text-4xl mb-4">Profile</h1> */}
+      <UserTabs isAdmin={isAdmin} />
+      <div className="max-w-md mx-auto mt-8">
+        <Link href="/menu-items" className="flex">
+          <span>Show all menu items</span>
+          <Right/>
+        </Link>
+      </div>
       <div className="max-w-md mx-auto">
         <div className="flex gap-4">
           <div>
             <div className="bg-white p-2 rounded-lg max-w-[120px]">
-              {image && (
+              {/* {image && (
                 <Image
                   className="rounded-lg w-full h-full mb-1"
                   src={image}
@@ -133,7 +139,8 @@ export default function ProfilePage() {
                 <span className="block border-gray-300 rounded-lg p-2 text-center cursor-pointer">
                   Edit
                 </span>
-              </label>
+              </label> */}
+              <EditableImage link={image} setLink={setImage} />
             </div>
           </div>
           <form className="grow" onSubmit={handleProfileInfoUpdate}>

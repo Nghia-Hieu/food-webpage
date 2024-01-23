@@ -17,8 +17,7 @@ export default function Header() {
         <nav className="flex items-center gap-8 text-red-600 font-semibold">
           <Link
             className=" text-sky-500 text-3xl no-underline"
-            href=""
-            // style={{ textDecoration: "none" }}
+            href="/"
           >
             Recuisine Lafonte
           </Link>
@@ -38,7 +37,7 @@ export default function Header() {
         <nav className="flex items-center gap-8 text-gray-600 font-semibold">
           {status === "authenticated" && (
             <>
-              <Link href="/profile" className="no-underline text-gray-500">Hello, {username}</Link>
+              <Link href="/profile" className="no-underline whitespace-nowrap text-gray-500">Hello, {username}</Link>
               <button
                 onClick={() => signOut()}
                 className="bg-sky-600	rounded-full text-white px-8 py-2"
