@@ -1,7 +1,7 @@
 "use client";
 import image from "next/image";
 import EditableImage from "./EditableImage";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { menu } from "@material-tailwind/react";
 import MenuItemPriceProps from "./MenuItemPriceProps";
 
@@ -17,12 +17,34 @@ export default function MenuItemForm({
   const [description, setDescription] = useState(menuItem?.description || "");
   const [price, setPrice] = useState(menuItem?.price || "");
   const [sizes, setSizes] = useState(menuItem?.sizes || []);
-  const [extraIngredientPrices, setExtraIngredientPrices] = useState(menuItem?.extraIngredientPrices || []);
+  const [extraIngredientPrices, setExtraIngredientPrices] = useState(
+    menuItem?.extraIngredientPrices || []
+  );
+  const [category, setCategory] = useState(menuItem?.category || "");
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    fetch("/api/categories").then((res) => {
+      res.json().then((categories) => {
+        setCategories(categories);
+      });
+    });
+  });
 
   return (
     <form
       className="mt-8 max-w-md mx-auto"
-      onSubmit={(ev) => onSubmit(ev, { image, name, description, price, sizes, extraIngredientPrices })}
+      onSubmit={(ev) =>
+        onSubmit(ev, {
+          image,
+          name,
+          description,
+          price,
+          sizes,
+          extraIngredientPrices,
+          category
+        })
+      }
     >
       <div
         className="grid items-start gap-4"
@@ -44,6 +66,15 @@ export default function MenuItemForm({
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           ></input>
+          <label>Category</label>
+          <select value={category} onChange={ev=> setCategory(ev.target.value)}>
+            {categories?.length > 0 &&
+              categories.map((c: any) => (
+                <option value={c._id} key={c._id}>
+                  {c.name}
+                </option>
+              ))}
+          </select>
           <label>Price</label>
           <input
             type="text"
