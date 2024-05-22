@@ -25,6 +25,6 @@
       "@/components/*": ["./src/components/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/libs/mongoConnect.js", "src/app/categories/page.tsx", "src/components/layout/EditableImage.tsx", "src/app/api/menu-items/route.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/libs/mongoConnect.js", "src/app/categories/page.tsx", "src/components/layout/EditableImage.tsx", "src/app/api/menu-items/route.js", "src/components/menu/MenuItem.js", "src/app/menu/page.js", "src/components/AppContext.js", "src/components/layout/Header.js"],
   "exclude": ["node_modules"]
 }

@@ -81,45 +81,6 @@ export default function MenuItemForm({
             value={price}
             onChange={(e) => setPrice(e.target.value)}
           ></input>
-          {/* <div className="bg-gray-300 p-2 rounded-md">
-            <label>Sizes</label>
-            {sizes?.length > 0 &&
-              sizes.map((size, index) => (
-                <div key={size} className="flex items-end gap-2">
-                  <div>
-                    <label>Size name</label>
-                    <input
-                      type="text"
-                      placeholder="Size name"
-                      value={size.name}
-                      onChange={(ev) => editSize(ev, index, "name")}
-                    />
-                  </div>
-                  <div>
-                    <label>Extra price</label>
-
-                    <input
-                      type="text"
-                      placeholder="Extra price"
-                      value={size.price}
-                      onChange={(ev) => editSize(ev, index, "price")}
-                    />
-                  </div>
-                  <div>
-                    <button
-                      type="button"
-                      onClick={() => removeSize(index)}
-                      className="bg-white mb-2"
-                    >
-                      x
-                    </button>
-                  </div>
-                </div>
-              ))}
-            <button type="button" onClick={addSize} className="bg-white">
-              Add size (like medium or large)
-            </button>
-          </div> */}
           <MenuItemPriceProps
             name={"Sizes"}
             addLabel={"Add item size"}
