@@ -1,14 +1,32 @@
 "use client";
 import { CartContext, cartProductPrice } from "@/components/AppContext";
 import SectionHeaders from "@/components/layout/SectionHeaders";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import Trash from "@/components/layout/icons/Trash";
 import AddressInput from "@/components/layout/AddressInput";
+import UseProfile from "@/components/UseProfile";
 
 export default function CartPage() {
   const { cartProducts, removeCartProduct } = useContext(CartContext);
   const [address, setAddress] = useState({});
+  const { data: profileData } = UseProfile();
+
+  useEffect(() => {
+    if (profileData?.city) {
+      const { phone, streetAddress, city, postalCode, country } = profileData;
+      const addressFromProfile = {
+        phone,
+        streetAddress,
+        city,
+        postalCode,
+        country,
+      };
+
+      setAddress(addressFromProfile);
+    }
+  }, [profileData]);
+
   let total = 0;
   for (const product of cartProducts) {
     total += cartProductPrice(product);
@@ -30,7 +48,7 @@ export default function CartPage() {
           {cartProducts?.length > 0 &&
             cartProducts.map((product, index) => (
               // eslint-disable-next-line react/jsx-key
-              <div className="flex items-center gap-4 mb-2 border-b py-2">
+              <div className="flex items-center gap-4 border-b py-4">
                 <div className="w-24">
                   <Image
                     width={240}
@@ -47,6 +65,7 @@ export default function CartPage() {
                     </div>
                   )}
                   {product.extras?.length > 0 && (
+                    // eslint-disable-next-line react/jsx-key
                     <div className="text-sm text-gray-500">
                       Extras:
                       {product.extras.map((extra) => (
@@ -71,7 +90,7 @@ export default function CartPage() {
                 </div>
               </div>
             ))}
-          <div className="py-4 text-right pr-16">
+          <div className="py-2 text-right pr-16">
             <span className="text-gray-500"> Total:</span>
             <span className="text-lg font-semibold pl-2">${total}</span>
           </div>
@@ -81,7 +100,7 @@ export default function CartPage() {
           <form>
             <label type="text" placeholder="Street address"></label>
             <AddressInput
-              addressProps={{ address }}
+              addressProps={address}
               setAddressProps={handleAddressChange}
             />
             <button type="submit">Pay ${total}</button>

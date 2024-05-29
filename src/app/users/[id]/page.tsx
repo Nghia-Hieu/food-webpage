@@ -17,7 +17,6 @@ export default function EditUserPage(){
         fetch('/api/profile?_id='+id).then(response =>{
             response.json().then(user=>{
                 setUser(user);
-                console.log(id);
             })
         })
     }, []);

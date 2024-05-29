@@ -3,7 +3,6 @@ import uniqid from "uniqid";
 
 export async function POST(req) {
   const data = await req.formData();
-  // console.log(data);
   if (data.get("file")) {
     const file = data.get("file");
     const s3Client = new S3Client({
@@ -16,7 +15,6 @@ export async function POST(req) {
 
     const ext = file.name.split(".").slice(-1)[0];
     const newFileName = uniqid() + "." + ext;
-    // console.log("File "+ newFileName);
 
     const chunks = [];
     for await (const chunk of file.stream()) {

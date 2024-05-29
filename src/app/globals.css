@@ -48,3 +48,6 @@ div.tabs > *.active{
   @apply bg-cyan-300 text-white
 }
 
+.flying-button-parent button{
+  @apply border-0 bg-teal-200;
+}
