@@ -17,7 +17,7 @@ export default function MenuPage() {
       res.json().then((menuItems) => setMenuItems(menuItems));
     });
   }, []);
-  return (
+  return (          
     <section>
       {categories.length > 0 &&
         categories.map((c) => (
@@ -26,6 +26,7 @@ export default function MenuPage() {
             <div className="text-center">
               <SectionHeaders mainHeader={c.name} subHeader={""} />
             </div>
+            
             <div className="grid grid-cols-3 gap-4 mt-6 mb-12">
               {menuItems
                 .filter((item) => item.category === c._id)

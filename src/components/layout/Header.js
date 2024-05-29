@@ -7,14 +7,14 @@ import ShoppingCart from "./icons/ShoppingCart";
 
 export default function Header() {
   const session = useSession();
-  // console.log(session);
-  const status = session.status;
+  const status = session?.status;
   const userData = session.data?.user;
   let username = userData?.name || userData?.email;
   const { cartProducts } = useContext(CartContext);
   if (username?.includes("")) {
     username = username.split(" ")[0];
   }
+  console.log(session)
   return (
     <>
       <header className="flex items-center justify-between">
@@ -53,7 +53,7 @@ export default function Header() {
             </>
           )}
 
-          {status !== "authenticated" && (
+          {status === "unauthenticated" && (
             <>
               <Link href="/login" className=" text-gray-500 no-underline">
                 Login

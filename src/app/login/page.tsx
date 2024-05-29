@@ -17,7 +17,8 @@ export default function LoginPage() {
 
     setLoginState(true);
 
-    await signIn('credentials',{email, password, callbackUrl: '/'});
+    await signIn('credentials',{email, password, callbackUrl: ''});
+
 
     setLoginState(true);
 
@@ -26,11 +27,11 @@ export default function LoginPage() {
     <section className="mt-8">
       <h1 className="text-center text-sky-500 text-4xl">Login</h1>
 
-      {error && (
+      {/* {error && (
         <div className="my-4 text-center font-semibold text-red-800">
           Error occured! Please try again later. <br />
         </div>
-      )}
+      )} */}
 
       <form className="block max-w-xs mx-auto" onSubmit={handleFormSubmit}>
         <input
