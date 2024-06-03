@@ -12,7 +12,7 @@ export async function POST(req) {
   }
   
   const originPass = pass;
-  console.log(originPass + " " + originPass.length)
+  //console.log(originPass + " " + originPass.length)
   const salt = bcrypt.genSaltSync(10);
   body.password = bcrypt.hashSync(originPass, salt);
   console.log(body.password);

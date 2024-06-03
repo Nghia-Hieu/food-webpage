@@ -18,10 +18,10 @@ export default function HomeMenu() {
         <h3 className="uppercase text-gray-500 font-semibold">Check out</h3>
         <h2 className="text-sky-600 font-bold text-4xl italic">Menu</h2>
       </div>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid sm:grid-cols-3 gap-4 ">
        {bestSellers?.length > 0 && bestSellers.map(item=>(
         // eslint-disable-next-line react/jsx-key
-        <MenuItem {...item}/>
+        <MenuItem key={item._id} {...item}/>
        ))}
 
       </div>

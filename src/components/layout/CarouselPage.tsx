@@ -11,7 +11,7 @@ export default function CarouselPage({ slides }: { slides: string[] }) {
         return (
           <Carousel.Item key={s}>
             <section className="grid grid-cols-2 py-4 ml-10">
-              <div className="py-8 md:py-12 m-auto">
+              <div className="py-4 md:py-12 m-auto">
                 <h1 className="text-4xl font-semibold">
                   Everything
                   <br />
@@ -33,7 +33,7 @@ export default function CarouselPage({ slides }: { slides: string[] }) {
                   </button>
                 </div>
               </div>
-              <div style={{width: '100%', height: '100%', position: 'relative'}}>
+              <div className="hidden md:block" style={{width: '100%', height: '100%', position: 'relative'}}>
                 <Image
                   src={s}
                   layout="fill"

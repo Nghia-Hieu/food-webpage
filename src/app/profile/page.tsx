@@ -18,6 +18,7 @@ export default function ProfilePage() {
   const session = useSession();
 
   const [user, setUser] = useState(null);
+  
   const [isAdmin, setIsAdmin] = useState(false);
   const [profileFetch, setProfileFetch] = useState(false);
   const { status } = session;

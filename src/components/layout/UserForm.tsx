@@ -29,7 +29,7 @@ export default function UserForm({
     if (propName === 'country') setCountry(value);
   }
   return (
-    <div className="flex gap-4">
+    <div className="md:flex gap-4">
       <div>
         <div className="bg-white p-2 rounded-lg max-w-[120px]">
           <EditableImage link={image} setLink={setImage} />
@@ -67,9 +67,8 @@ export default function UserForm({
           value={user.email}
         ></input>
 
-        <AddressInput addressProps={{phone, streetAddress, postalCode, city, country}}
-                      setAddressProps={handleAddressChange}
-        />
+        <AddressInput addressProps={{ phone, streetAddress, postalCode, city, country }}
+        setAddressProps={handleAddressChange} disabled={false}        />
         
         {loggedInUserData.admin &&(
             <div>
