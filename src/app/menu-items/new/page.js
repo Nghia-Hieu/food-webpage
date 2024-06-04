@@ -13,7 +13,7 @@ export default function NewMenuItemPage() {
   const { loading, data } = UseProfile();
   const [redirectToItems, setRedirectToItems] = useState(false);
 
-  async function handleFormSubmit(ev: any, data: any) {
+  async function handleFormSubmit(ev, data) {
     ev.preventDefault();
     const savingPromise = new Promise(async (resolve, reject) => {
       const response = await fetch("/api/menu-items", {

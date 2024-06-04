@@ -21,10 +21,10 @@ export default function EditUserPage(){
         })
     }, []);
 
-    async function handleSaveButtonClick(ev: any, data: any){
+    async function handleSaveButtonClick(ev, data){
         ev.preventDefault();
 
-        const promise = new Promise<void>(async(resolve, reject)=>{
+        const promise = new Promise(async(resolve, reject)=>{
             const res = await  fetch('/api/profile',{
                 method: 'PUT',
                 headers: {'Content-Type': 'application/json'},

@@ -25,13 +25,13 @@ export default function EditMenuItemPage() {
   useEffect(() => {
     fetch("/api/menu-items").then((res) => {
       res.json().then((items) => {
-        const item = items.find((i: any) => i._id === id);
+        const item = items.find((i) => i._id === id);
         setMenuItem(item);
       });
     });
   }, []);
 
-  async function handleFormSubmit(ev: any, data: any) {
+  async function handleFormSubmit(ev, data) {
     ev.preventDefault();
     // data = { ...data, _id: id };
     const savingPromise = new Promise(async (resolve, reject) => {

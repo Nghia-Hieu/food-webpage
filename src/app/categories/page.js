@@ -11,7 +11,7 @@ export default function Categories() {
   const [categoryName, setCategoryName] = useState("");
   const [editedCategory, setEditedCategory] = useState(null);
 
-  const handleCategorySubmit = async (ev: any) => {
+  const handleCategorySubmit = async (ev) => {
     ev.preventDefault();
     const data = { name: categoryName };
     if (editedCategory) {
@@ -53,7 +53,7 @@ export default function Categories() {
     });
   }
 
-  async function handleDeleteClick(_id: any) {
+  async function handleDeleteClick(_id) {
     const promise = new Promise(async (resolve, reject) => {
       const response = await fetch("/api/categories?_id=" + _id, {
         method: "DELETE",
@@ -121,7 +121,7 @@ export default function Categories() {
       <div>
         <h2 className="mt-8 ml-1 text-sm text-gray-500">Edit Category: </h2>
         {categories?.length > 0 &&
-          categories.map((c: any) => (
+          categories.map((c) => (
             <div
               className="bg-gray-100 border-sky-300 rounded-xl p-2 px-4 mb-1 cursor-pointer flex gap-1 items-center"
               key={c?.name}

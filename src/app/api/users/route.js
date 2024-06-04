@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import {isAdmin} from '../auth/[...nextauth]/route'
+import {isAdmin} from '@/utils/authOption'
 import {User} from "../../models/User"
 
 
