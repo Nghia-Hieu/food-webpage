@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { getServerSession } from "next-auth";
-import { authOption } from "../auth/[...nextauth]/route";
+import { authOption } from "@/utils/authOption";
 import { User } from "../../models/User";
 import { UserInfo } from "@/app/models/UserInfos";
 
